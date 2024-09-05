@@ -1,0 +1,82 @@
+.headerclass {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: #272727;
+  /* margin-bottom: 50px; */
+}
+.headlogodiv {
+  margin-left: 37px;
+}
+.logoimg {
+  height: 35px;
+  width: 100px;
+}
+.homejobsdiv {
+  display: flex;
+}
+.discriptionandbuttondiv {
+  color: aliceblue;
+}
+.mainbodydiv {
+  background-size: cover;
+  height: 100vh;
+  padding-top: 0px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://assets.ccbp.in/frontend/react-js/home-lg-bg.png");
+}
+.discriptionandbuttondiv {
+  margin: 20px;
+  margin-top: 30px;
+  padding-top: 10px;
+}
+.headingdiv {
+  margin: 20px;
+  padding: 10px;
+}
+.discriptiondiv {
+  margin: 25px;
+}
+.heading {
+  /* margin: 18px; */
+  margin-bottom: 5px;
+  font-family: roboto;
+}
+.description {
+  color: #f8fafc;
+  margin-bottom: 20px;
+  font-family: roboto;
+  font-size: 25px;
+}
+.buttondiv {
+  margin: 25px;
+  padding-top: 20px;
+}
+.findjobsbutton {
+  background-color: #6366f1;
+  color: #f8fafc;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: roboto;
+}
+.logoutbutton {
+  padding: 5px 18px;
+  border-radius: 4px;
+  background-color: #6366f1;
+  color: #f8fafc;
+  border: none;
+  margin: 5px;
+  font-family: roboto;
+}
+.logoutbtndiv {
+  padding-right: 25px;
+}
+.homejobsh1 {
+  margin: 12px;
+  color: #f8fafc;
+  font-family: roboto;
+  cursor: pointer;
+}
