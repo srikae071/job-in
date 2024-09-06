@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import JobItem from "../JobItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { ClipLoader } from "react-spinners";
 import "./index.css";
 const Jobs = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Jobs = () => {
   const apistatusConstants = {
     initial: "INITIAL",
     success: "SUCCESS",
-    empty: "EMPTY",
+
     inProgress: "INPROGRESS",
   };
 
@@ -69,6 +70,7 @@ const Jobs = () => {
 
   useEffect(() => {
     const getprofiledeteils = async () => {
+      setapistatus(apistatusConstants.inProgress);
       const jwttoken = Cookies.get("jwt_token");
       const url = "https://apis.ccbp.in/profile";
       const options = {
@@ -88,6 +90,7 @@ const Jobs = () => {
             shortbio: data.profile_details.short_bio,
           };
           setProfiledetails(upadatedprofiledata);
+          setapistatus(apistatusConstants.success);
         }
       } catch (error) {
         console.error("Error:", error);
@@ -388,19 +391,17 @@ const Jobs = () => {
     );
   };
 
-  const loadingView = () => {
-    return (
-      <div className="loading-div">
-        <h1 style={{ color: "white" }}>Loading pls wait.....</h1>
-      </div>
-    );
-  };
+  const isloading = () => (
+    <div className="loading-spinner-div">
+      <ClipLoader color="#6366f1" size={200} className="clip-loader" />
+    </div>
+  );
 
   switch (apistatus) {
     case apistatusConstants.success:
       return jobslayout();
     case apistatusConstants.inProgress:
-      return loadingView();
+      return isloading();
     case apistatusConstants.empty:
       return emptylistView();
     default:

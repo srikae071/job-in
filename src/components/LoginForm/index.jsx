@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+const apistatusConstants = {
+  initial: "INITIAL",
+  success: "SUCCESS",
+
+  inProgress: "INPROGRESS",
+};
 
 const LoginForm = () => {
+  const [apistatus, setapistatus] = useState(apistatusConstants.initial);
   const [username, setUsername] = useState("rahul");
   const [password, setPassword] = useState("rahul@2021");
   const [showErrorMsg, setShowErrorMsg] = useState(false);
@@ -17,6 +24,7 @@ const LoginForm = () => {
   };
   const submitForm = async (event) => {
     event.preventDefault();
+    setapistatus(apistatusConstants.inProgress);
     const url = "https://apis.ccbp.in/login";
     const options = {
       method: "POST",
@@ -37,6 +45,7 @@ const LoginForm = () => {
   };
   const onsubmitSuccess = (jwtToken) => {
     Cookies.set("jwt_token", jwtToken, { expires: 30, path: "/" });
+    setapistatus(apistatusConstants.success);
     navigate("/");
   };
   const onsubmitFailed = (errorMsg) => {

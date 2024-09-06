@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaStar } from "react-icons/fa";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-
+import { ClipLoader } from "react-spinners"; // Import spinner
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+
 import "./jobItemindex.css";
 
 const ApiStatusConstants = {
@@ -19,7 +20,7 @@ const JobItemDetails = () => {
   const [jobItemData, setjobItemData] = useState({});
   const [jobItemSkills, setjobItemSkills] = useState([]);
   const [apiStatus, setapiStatus] = useState(ApiStatusConstants.initial);
-
+  const [appilied, setapplied] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const onclickLogout = () => {
@@ -29,7 +30,7 @@ const JobItemDetails = () => {
 
   useEffect(() => {
     const getgobinsdata = async () => {
-      setapiStatus(ApiStatusConstants.initial);
+      setapiStatus(ApiStatusConstants.inProgress);
       const jwttoken = Cookies.get("jwt_token");
       const url = `https://apis.ccbp.in/jobs/${id}`;
       const options = {
@@ -270,19 +271,92 @@ const JobItemDetails = () => {
                 )}
             </div>
           </div>
+          <div className="jobitem-apply-button-div">
+            <button
+              className="jobitem-apply-button"
+              onClick={() => {
+                setapplied(true);
+              }}
+            >
+              Apply Now
+            </button>
+          </div>
         </div>
       </div>
     );
   };
 
+  const isloading = () => (
+    <div className="loading-spinner-div">
+      <ClipLoader color="#6366f1" size={200} className="clip-loader" />
+    </div>
+  );
+
   const jobItemstructure = () => {
     return (
       <div>
         {header()}
-        {jobSummary()}
+        {appilied ? appliedPage() : jobSummary()}
+        {/* {isloading()} */}
+
+        {/* {appliedPage()} */}
       </div>
     );
   };
+
+  const appliedPage = () => {
+    return (
+      <div className="applied-page-div">
+        <div className="applied-page-image-div">
+          <img
+            src="/thanku.png"
+            alt="success view"
+            className="applied-page-img"
+          />
+        </div>
+        <div className="job-item-back-button-div">
+          <button
+            onClick={() => {
+              navigate("/jobs");
+              setapplied(false);
+            }}
+            className="job-item-back-button"
+          >
+            back
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const failureview = () => {
+    return (
+      <div className="jobitem-failure-view-div">
+        <div className="jobitemfailure-view-image-div">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+            alt="failure view"
+            className="failure-view-img"
+          />
+        </div>
+        <div className="jobitem-failure-view-heading-div">
+          <h1 className="jobitem-failure-view-heading">
+            Oops! Something Went Wrong
+          </h1>
+        </div>
+      </div>
+    );
+  };
+  switch (apiStatus) {
+    case ApiStatusConstants.inProgress:
+      return isloading();
+    case ApiStatusConstants.success:
+      return jobItemstructure();
+
+    default:
+      return null;
+  }
+
   return <div>{jobItemstructure()}</div>;
 };
 
