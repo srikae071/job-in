@@ -5,15 +5,24 @@
   background-color: #272727;
   /* margin-bottom: 50px; */
 }
-.headlogodiv {
+.head-logo-title-div {
+  display: flex;
+  margin-top: 3px;
+}
+.header-logo-div {
   margin-left: 37px;
 }
-.logoimg {
-  height: 35px;
-  width: 100px;
+.header-logo-img {
+  height: 31px;
 }
-.homejobsdiv {
-  display: flex;
+.header-title-div {
+  margin-left: 8px;
+  margin-top: -10px;
+}
+.header-title {
+  color: #4f46e5;
+  font-size: 22px;
+  font-family: roboto;
 }
 .discriptionandbuttondiv {
   color: aliceblue;

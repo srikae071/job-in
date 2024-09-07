@@ -55,12 +55,13 @@ const LoginForm = () => {
   return (
     <form onSubmit={submitForm} className="formmainimg">
       <div className="formitemdiv">
-        <div className="loginpagediv">
-          <img
-            className="loginpageimg"
-            src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
-            alt="website logo"
-          />
+        <div className="logo-img-heading-div">
+          <div className="logo-img-div">
+            <img src="/logo-img.png" alt="logoimg" className="logo-img" />
+          </div>
+          <div className="logo-heading-div">
+            <h1 className="logoheading">JOB-IN</h1>
+          </div>
         </div>
         <div className="usernamepassdiv">
           <label className="usernamelabel">
@@ -74,8 +75,8 @@ const LoginForm = () => {
             />
           </label>
           <br />
-          <label>
-            <p1 className="pasworsparacls">PASSWORD</p1>
+          <label className="password-div">
+            <p1 className="password">PASSWORD</p1>
             <br />
             <input
               className="password-name-input"
@@ -89,7 +90,9 @@ const LoginForm = () => {
           <button className="loginbuton" type="submit">
             Login
           </button>
-          {showErrorMsg && <p>{errorMsg}</p>}
+          <div className="errormsg-div">
+            {showErrorMsg && <p className="error-msg">**{errorMsg}**</p>}
+          </div>
         </div>
       </div>
     </form>

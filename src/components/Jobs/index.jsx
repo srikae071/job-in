@@ -158,12 +158,17 @@ const Jobs = () => {
   const header = () => {
     return (
       <div className="headerclass">
-        <div className="headlogodiv">
-          <img
-            className="logoimg"
-            src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
-            alt="logo"
-          />
+        <div className="head-logo-title-div">
+          <div className="header-logo-div">
+            <img
+              src="/logo-img.png"
+              alt="logoimg"
+              className="header-logo-img"
+            />
+          </div>
+          <div className="header-title-div">
+            <h1 className="header-title">JOB-IN</h1>
+          </div>
         </div>
         <div className="homejobsdiv">
           <p
