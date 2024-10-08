@@ -28,15 +28,51 @@
 
 // export default App;
 
+// import React from "react";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import LoginForm from "./components/LoginForm";
+// import Home from "./components/Home";
+// import Jobs from "./components/Jobs";
+// import JobItemDetails from "./components/JobItemDetails";
+// import NotFound from "./components/NotFound";
+// function App() {
+//   const router = createBrowserRouter([
+//     {
+//       path: "/",
+//       element: <Home />,
+//     },
+//     {
+//       path: "/login",
+//       element: <LoginForm />,
+//     },
+//     {
+//       path: "/jobs",
+//       element: <Jobs />,
+//     },
+//     {
+//       path: "/jobs/:id",
+//       element: <JobItemDetails />,
+//     },
+//     {
+//       path: "*",
+//       element: <NotFound />,
+//     },
+//   ]);
+
+//   return <RouterProvider router={router} />;
+// }
+
+// export default App;
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Home from "./components/Home";
 import Jobs from "./components/Jobs";
 import JobItemDetails from "./components/JobItemDetails";
 import NotFound from "./components/NotFound";
+
 function App() {
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/",
       element: <Home />,
